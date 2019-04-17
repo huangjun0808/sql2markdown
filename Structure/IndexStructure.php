@@ -2,12 +2,12 @@
 /**
  *
  * User: wowo
- * Date: 2019/4/17 下午4:25
+ * Date: 2019/4/17 下午4:40
  */
 
 namespace s2d;
 
-class ColumnStructure
+class IndexStructure
 {
 
 }

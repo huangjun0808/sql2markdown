@@ -7,13 +7,20 @@
 
 namespace s2d;
 
-
 class TableStructure
 {
+    /**
+     * @var $table_name string
+     * @var $table_comment string
+     * @var $columns ColumnStructure
+     * @var $engine string
+     * @var $default_charset string
+     * @var $indexes IndexStructure
+     */
     private $table_name;
     private $table_comment;
     private $columns;
-    private $endine;
+    private $engine;
     private $default_charset;
     private $indexes;
 
