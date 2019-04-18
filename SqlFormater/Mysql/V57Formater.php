@@ -16,6 +16,9 @@ class V57Formater extends BaseFormater
 
     private $sections;
 
+    /**
+     * @var $tables TableStructure[]
+     */
     private $tables;
 
     public function __construct($file_path)
@@ -69,7 +72,16 @@ class V57Formater extends BaseFormater
         }
     }
 
-    public function format()
+    public function formatOutput()
     {
+        foreach ($this->tables as $table) {
+            echo "### " . $table->getTableName() ."表(" . $table->getComment() . ")\n";
+            echo "|字段名|类型|长度|默认值|备注|\n";
+            echo "|---|---|---|---|---|\n";
+            foreach ($table->getColumns() as $column) {
+                echo "|" . $column->getName() . "|" . $column->getType() . "|" . $column->getLength() . "|" . $column->getDefaultValue() . "|" . $column->getComment() . "|\n";
+            }
+            echo "----------------------------------------------------------------\n\n";
+        }
     }
 }

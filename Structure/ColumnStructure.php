@@ -75,7 +75,7 @@ class ColumnStructure
             }
         }
 
-        preg_match("/.*DEFAULT '(.*)'.*/", $str, $result);
+        preg_match("/.*DEFAULT '(.*?)'.*/", $str, $result);
         if (isset($result[1])) {
             $this->default_value = $result[1];
         }
@@ -83,5 +83,117 @@ class ColumnStructure
         if (StringTool::contains($str, 'auto_increment')) {
             $this->auto_increment = true;
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    /**
+     * @param int $length
+     */
+    public function setLength($length)
+    {
+        $this->length = $length;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultValue()
+    {
+        return $this->default_value;
+    }
+
+    /**
+     * @param string $default_value
+     */
+    public function setDefaultValue($default_value)
+    {
+        $this->default_value = $default_value;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isNotNull()
+    {
+        return $this->not_null;
+    }
+
+    /**
+     * @param boolean $not_null
+     */
+    public function setNotNull($not_null)
+    {
+        $this->not_null = $not_null;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAutoIncrement()
+    {
+        return $this->auto_increment;
+    }
+
+    /**
+     * @param boolean $auto_increment
+     */
+    public function setAutoIncrement($auto_increment)
+    {
+        $this->auto_increment = $auto_increment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
     }
 }

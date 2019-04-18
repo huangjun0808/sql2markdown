@@ -22,7 +22,7 @@ class TableStructure
     private $table_comment;
 
     /**
-     * @var $columns ColumnStructure
+     * @var $columns ColumnStructure[]
      * collections of columns
      */
     private $columns;
@@ -75,5 +75,20 @@ class TableStructure
     {
         $column = new ColumnStructure($str);
         $this->columns[] = $column;
+    }
+
+    public function getTableName()
+    {
+        return $this->table_name;
+    }
+
+    public function getComment()
+    {
+        return $this->table_comment;
+    }
+
+    public function getColumns()
+    {
+        return $this->columns;
     }
 }

@@ -13,3 +13,4 @@ use s2d\formater\mysql\V57Formater;
 $formater = new V57Formater('1.sql');
 $formater->splitSections();
 $formater->geneTables();
+$formater->formatOutput();
