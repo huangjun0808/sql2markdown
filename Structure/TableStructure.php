@@ -7,6 +7,8 @@
 
 namespace s2d\structure;
 
+use s2d\tools\StringTool;
+
 class TableStructure
 {
     /**
@@ -52,12 +54,13 @@ class TableStructure
         foreach ($items as $item) {
             if (strpos($item, '=') !== false) {
                 $item = strtolower($item);
-                if (strpos($item, 'engine') !== false) {
-                    $this->engine = trim(end(explode('=', $item)), ';');
-                } elseif (strpos($item, 'charset') !== false) {
-                    $this->default_charset = trim(end(explode('=', $item)), ';');
-                } elseif (strpos($item, 'comment') !== false) {
-                    $this->table_comment = trim(end(explode('=', $item)), ';');
+                $item = explode('=', $item);
+                if ($item[0] == 'engine') {
+                    $this->engine = trim($item[1], ';');
+                } elseif ($item[0] == 'charset') {
+                    $this->default_charset = trim($item[1], ';');
+                } elseif ($item[0] == 'comment') {
+                    $this->table_comment = trim($item[1], ';');
                 }
             }
         }
@@ -70,5 +73,7 @@ class TableStructure
 
     public function setColumn($str)
     {
+        $column = new ColumnStructure($str);
+        $this->columns[] = $column;
     }
 }

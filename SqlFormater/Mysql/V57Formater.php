@@ -65,6 +65,7 @@ class V57Formater extends BaseFormater
                     $table->setColumn($column);
                 }
             }
+            $this->tables[] = $table;
         }
     }
 
