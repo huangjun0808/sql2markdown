@@ -72,8 +72,9 @@ class V57Formater extends BaseFormater
         }
     }
 
-    public function formatOutput()
+    public function formatOutput($output_file_path)
     {
+        ob_start();
         foreach ($this->tables as $table) {
             echo "### " . $table->getTableName() ."表(" . $table->getComment() . ")\n";
             echo "|字段名|类型|长度|默认值|备注|\n";
@@ -81,7 +82,10 @@ class V57Formater extends BaseFormater
             foreach ($table->getColumns() as $column) {
                 echo "|" . $column->getName() . "|" . $column->getType() . "|" . $column->getLength() . "|" . $column->getDefaultValue() . "|" . $column->getComment() . "|\n";
             }
-            echo "----------------------------------------------------------------\n\n";
+            echo "\n\n";
         }
+        $file = fopen($output_file_path, "w");
+        fwrite($file, ob_get_contents());
+        ob_end_clean();
     }
 }

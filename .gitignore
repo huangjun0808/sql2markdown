@@ -1,4 +1,5 @@
 .idea
+output
 .phplint-cache
 vendor
 sql
