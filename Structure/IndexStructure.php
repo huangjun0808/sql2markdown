@@ -5,7 +5,7 @@
  * Date: 2019/4/17 下午4:40
  */
 
-namespace s2d;
+namespace s2d\structure;
 
 class IndexStructure
 {

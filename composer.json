@@ -1,5 +1,13 @@
 {
-    "require": {
-        "zhenggui/php-cc": "^1.15"
+  "require": {
+    "zhenggui/php-cc": "^1.15"
+  },
+  "autoload": {
+    "psr-4": {
+      "s2d\\": "./",
+      "s2d\\formater\\": "SqlFormater",
+      "s2d\\formater\\mysql\\": "SqlFormater/Mysql",
+      "s2d\\structure\\": "Structure"
     }
+  }
 }
