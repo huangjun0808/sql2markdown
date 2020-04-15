@@ -60,10 +60,13 @@ class V57Formater extends BaseFormater
         foreach ($this->sections as $table_name => $columns) {
             $table = new TableStructure($table_name);
             foreach ($columns as $column) {
+                $column = trim($column);
                 if (strpos(strtolower($column), ';') > 0) {
                     $table->setTableInfo($column);
                 } elseif (strpos(strtolower($column), 'primary key') !== false) {
                     $table->setPrimaryKey($column);
+                } elseif(strtolower(substr($column, 0, 3)) === 'key' || strtolower(substr($column, 0, 6)) === 'unique'){
+                    
                 } else {
                     $table->setColumn($column);
                 }
